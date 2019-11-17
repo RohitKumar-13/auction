@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require_relative 'command_runner'
+
+if ARGV.length > 0
+  ARGF.each_line do |line|
+    CommandRunner.run(line.chomp)
+  end
+else
+  command = nil
+  while command != 'exit'
+    command = STDIN.gets.chomp
+    CommandRunner.run(command) if command != 'exit'
+  end
+end
